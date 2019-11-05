@@ -5,7 +5,7 @@ We use Apache Spark’s ML libraries to build an email spam filtering, binary cl
 
 ##  Dataset Exploration
 
-The model is trained and evaluated based on the already provided datasets in the code stub.  It is normal that as a first step to explore the dataset to understand what are the problems with the data and how can we handle them.  Figure and represent a few lines from the nospam and spam training datasets.  There are in total 4460 (3862 no-spam and 598 spam) lines for the training dataset.  Onthe other hand the model is evaluated on the test dataset which has in total 1114 (965 no-spam and 149 spam).  So, there is a split 80% for training and 20% for testing.  The provided datasets are not having a label as a separate column so, a new column is added to the dataframe.  The new column  is  named  “label“  and  has  the  value  1.0  when  the  message  is  spam  and  0.0  for  no-spam.The class spam/no-spam can easily be distinguished from the fact that the provided datasets are already separated.  The label column it is required to evaluate the model in the last step.
+The model is trained and evaluated based on the already provided datasets.  It is normal that as a first step to explore the dataset to understand what are the problems with the data and how can we handle them. There are in total 4460 (3862 no-spam and 598 spam) lines for the training dataset.  Onthe other hand the model is evaluated on the test dataset which has in total 1114 (965 no-spam and 149 spam).  So, there is a split 80% for training and 20% for testing.  The provided datasets are not having a label as a separate column so, a new column is added to the dataframe.  The new column  is  named  “label“  and  has  the  value  1.0  when  the  message  is  spam  and  0.0  for  no-spam.The class spam/no-spam can easily be distinguished from the fact that the provided datasets are already separated.  The label column it is required to evaluate the model in the last step.
 
 The dataset exploration shows that we have some problems as in the below list.
   - Slangs are present.
@@ -106,8 +106,9 @@ calculating how rare the score of a term is between documents. TF-IDF
 score uses the below formulas where t is the term and D is the
 collection of documents.
 
-\[IDF(t, D) = \log \frac{|D| + 1}{DF(t, D) + 1}\]  
-\[TF-IDF(t, d, D) = TF(t, d) \cdot IDF(t, D).\]
+<img src="https://tex.s2cms.ru/svg/IDF(t%2C%20D)%20%3D%20%5Clog%20%5Cfrac%7B%7CD%7C%20%2B%201%7D%7BDF(t%2C%20D)%20%2B%201%7D" alt="IDF(t, D) = \log \frac{|D| + 1}{DF(t, D) + 1}" />
+
+<img src="https://tex.s2cms.ru/svg/TF-IDF(t%2C%20d%2C%20D)%20%3D%20TF(t%2C%20d)%20%5Ccdot%20IDF(t%2C%20D)" alt="TF-IDF(t, d, D) = TF(t, d) \cdot IDF(t, D)" />
 
 We use TFhashing class of Spark ML to calculate the TF part of the
 TF-IDF. The TFhashing has two functionalities. It calculates the terms
@@ -133,7 +134,7 @@ algorithms because Naive Bayes is simple and highly scalable. The Bayes
 Rules give the relationship between an hypothesis before and after an
 event is happening. The general formula for Bayes Rules is:
 
-\[P(H \mid E) =  \frac{P(E \mid H)} {P(E)} P(H)\]
+<img src="https://tex.s2cms.ru/svg/P(H%20%5Cmid%20E)%20%3D%20%20%5Cfrac%7BP(E%20%5Cmid%20H)%7D%20%7BP(E)%7D%20P(H)" alt="P(H \mid E) =  \frac{P(E \mid H)} {P(E)} P(H)" />
 
 P(H) - Probability of hypothesis  
 P(E) - Probability of an event that happens
